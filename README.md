@@ -22,3 +22,6 @@ Repository for Retrofit Examples
  - If you can NOT use Ant and Ivy
    - Click the links above this paragraph to download required libraries
 - Add the downloaded libraries on Eclipse
+- Replace a String **OAUTH2_ACCESS_TOKEN** on the [Main.java](https://github.com/KunHwanAhn/RetrofitEx/blob/thingplus/src/com/ak/sample/retrofit/main/Main.java#L20)
+   - To Get OAuth2 Token from [Thing+](https://thingplus.net), Please refer [Thing+ Support Site](http://support.thingplus.net/ko/rest-api/getting-started.html)
+- **Run It**
