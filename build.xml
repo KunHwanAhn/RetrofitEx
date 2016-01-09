@@ -1,0 +1,60 @@
+<project name="RetrofitEx" basedir="." default="build" xmlns:ivy="antlib:org.apache.ivy.ant">
+    <property name="src.dir" value="src"/>
+    <property name="test.dir" value="test"/>
+    <property name="lib.dir" value="libs" />
+    <property name="bin.dir" value="bin"/>
+    <property name="build.dir" value="build"/>
+    <property name="testresult.dir" value="${build.dir}/${test.dir}"/>
+    <property name="test.bin.dir" value="${testresult.dir}/${bin.dir}"/>
+    <property name="testreport.dir" value="${testresult.dir}/report"/>
+    <property name="pkg.name" value="com.ak.sample.retrofit"/>
+    <property name="main" value="${pkg.name}.main.Main"/>
+
+    <path id="lib.path.id">
+        <fileset dir="${lib.dir}" />
+    </path>
+
+    <target name="clean-cache">
+        <ivy:cleancache/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${bin.dir}"/>
+        <delete dir="${lib.dir}"/>
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="resolve" depends="clean">
+        <ivy:retrieve pattern="${lib.dir}/[artifact].[ext]" />
+    </target>
+
+    <target name="build" depends="resolve">
+        <mkdir dir="${bin.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${bin.dir}" classpathref="lib.path.id"/>
+    </target>
+
+    <target name="test" depends="clean, build">
+        <mkdir dir="${test.bin.dir}"/>
+        <mkdir dir="${testreport.dir}"/>
+        <javac srcdir="${test.dir}" destdir="${test.bin.dir}" classpathref="lib.path.id">
+            <classpath>
+                <pathelement location="${bin.dir}"/>
+            </classpath>
+        </javac>
+        <junit printsummary="on" fork="on" haltonfailure="on">
+            <classpath refid="lib.path.id"/>
+            <classpath>
+                <pathelement location="${bin.dir}"/>
+                <pathelement location="${test.bin.dir}"/>
+            </classpath>
+
+            <formatter type="xml"/>
+            <batchtest todir="${testreport.dir}">
+                <fileset dir="${test.dir}">
+                    <include name="**/*Test*.java" />
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+        
+</project>

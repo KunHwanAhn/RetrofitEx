@@ -1,0 +1,10 @@
+<ivy-module version="2.0">
+    <info organisation="KunhwanAhn" module="RetrofitEx"/>
+    <dependencies>
+        <dependency org="com.squareup.retrofit" name="retrofit" rev="2.0.0-beta2"/>
+        <dependency org="com.squareup.okhttp" name="okhttp" rev="2.5.0"/>
+        <dependency org="com.squareup.okio" name="okio" rev="1.6.0"/>
+        <dependency org="com.squareup.retrofit" name="converter-gson" rev="2.0.0-beta2"/>
+        <dependency org="com.google.code.gson" name="gson" rev="2.5"/>
+    </dependencies>
+</ivy-module>
