@@ -15,6 +15,8 @@ Repository for Retrofit Examples
 - [Converter-Gson 2.0.0-beta2](http://central.maven.org/maven2/com/squareup/retrofit/converter-gson/2.0.0-beta2/converter-gson-2.0.0-beta2.jar)
 - [Gson 2.5](http://central.maven.org/maven2/com/google/code/gson/gson/2.5/gson-2.5.jar)
 
+> You **MUST CHOOSE** a branch, **NOT master branch**, and then do **'git clone'**.
+
 ## How To Build This Project
 1. Download required libraries 
  - If you can use Ant and Ivy
