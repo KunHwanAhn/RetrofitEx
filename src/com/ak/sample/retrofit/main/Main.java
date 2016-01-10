@@ -8,8 +8,8 @@ import static com.ak.sample.retrofit.utils.Constants.HTTP_CODE_SERVER_ERROR;
 
 import java.util.List;
 
-import com.ak.sample.retrofit.RetrofitWrapper;
 import com.ak.sample.retrofit.data.Gateway;
+import com.ak.sample.retrofit.get.RetrofitWrapperGet;
 import com.google.gson.JsonArray;
 
 import retrofit.Callback;
@@ -20,7 +20,7 @@ public class Main {
     public static final String OAUTH2_ACCESS_TOKEN = "OAUTH2_ACCESS_TOKEN";
 
     public static void main(String[] args) {
-        RetrofitWrapper wrapper = new RetrofitWrapper(OAUTH2_ACCESS_TOKEN);
+        RetrofitWrapperGet wrapper = new RetrofitWrapperGet(OAUTH2_ACCESS_TOKEN);
 
         wrapper.getGateways(new Callback<JsonArray>() {
 

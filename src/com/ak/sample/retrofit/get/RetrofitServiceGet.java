@@ -1,4 +1,4 @@
-package com.ak.sample.retrofit;
+package com.ak.sample.retrofit.get;
 
 import static com.ak.sample.retrofit.utils.Constants.*;
 
@@ -11,7 +11,7 @@ import retrofit.Call;
 import retrofit.http.GET;
 import retrofit.http.Header;
 
-public interface RetrofitService {
+public interface RetrofitServiceGet {
 
     @GET(GATEWAYS)
     Call<JsonArray> getGateways(@Header(HEADER_AUTHORIZATION) String oauthAccessToken);
