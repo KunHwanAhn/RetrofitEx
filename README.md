@@ -23,6 +23,6 @@ Repository for Retrofit Examples
    - Click the links above this paragraph to download required libraries
 - Add the downloaded libraries on Eclipse
 - Replace a String **OAUTH2_ACCESS_TOKEN** on the [Main.java](https://github.com/KunHwanAhn/RetrofitEx/blob/github/src/com/ak/sample/retrofit/main/Main.java#L16)
-   - To Get OAuth2 Token from [Github](https://https://github.com), Please refer [GithubDeveloper](https://developer.github.com/v3/oauth/)
+   - To Get OAuth2 Token from [Github](https://github.com), Please refer [GithubDeveloper](https://developer.github.com/v3/oauth/)
    - You can get your own **Personal OAuth AccessToken** on [your profile](https://github.com/settings/tokens)
 - **Run It**
