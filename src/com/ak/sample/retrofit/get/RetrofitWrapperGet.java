@@ -14,24 +14,26 @@ import retrofit.Retrofit;
 
 public class RetrofitWrapperGet {
     private String mOAuthAccessToken;
-    private Retrofit mRetrofit;
+    private RetrofitServiceGet mService;
 
     public RetrofitWrapperGet(String oauthAccessToken) {
         mOAuthAccessToken = oauthAccessToken;
 
-        mRetrofit = new Retrofit.Builder()
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
+        mService = retrofit.create(RetrofitServiceGet.class);
     }
 
     public void getUser(Callback<JsonArray> callback) {
-        Call<JsonArray> call = mRetrofit.create(RetrofitServiceGet.class).getUser(mOAuthAccessToken);
+        Call<JsonArray> call = mService.getUser(mOAuthAccessToken);
         call.enqueue(callback);
     }
 
     public void getUserWithDataClass(Callback<List<Email>> callback) {
-        Call<List<Email>> call = mRetrofit.create(RetrofitServiceGet.class).getUserWithDataClass(mOAuthAccessToken);
+        Call<List<Email>> call = mService.getUserWithDataClass(mOAuthAccessToken);
         call.enqueue(callback);
     }
 
