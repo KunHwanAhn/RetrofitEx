@@ -14,8 +14,11 @@ import retrofit.http.Header;
 public interface RetrofitServiceGet {
 
     @GET(GATEWAYS)
-    Call<JsonArray> getGateways(@Header(HEADER_AUTHORIZATION) String oauthAccessToken);
+    Call<JsonArray> getGateways(
+            @Header(HEADER_AUTHORIZATION) String oauthAccessToken);
 
     @GET(GATEWAYS)
-    Call<List<Gateway>> getGatewaysWithDataClass(@Header(HEADER_AUTHORIZATION) String oauthAccessToken);
+    Call<List<Gateway>> getGatewaysWithDataClass(
+            @Header(HEADER_AUTHORIZATION) String oauthAccessToken);
+
 }
