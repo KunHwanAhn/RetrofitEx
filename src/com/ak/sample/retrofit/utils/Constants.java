@@ -7,9 +7,10 @@ public class Constants {
     public static final int HTTP_CODE_SERVER_ERROR = 500;
 
     public static final String GATEWAYS = "gateways";
-    public static final String SENSORS = "sensors";
 
     public static final String ERROR_CLIENT_ERROR_STRING = "Failed to get data, beacuse of client side error";
     public static final String ERROR_SERVER_ERROR_STRING = "Failed to get data, beacuse of server side error";
     public static final String ERROR_NETWORK_CONNECTION_STRING = "Failed to get data, beacuse of network connection";
+    public static final String ERROR_FAILED_TO_SEND_TO_SERVER = "Failed to send data to server";
+    public static final String ERROR_UNEXPECTED_ERRORS_OCCURS = "Unexpected error occurs";
 }
