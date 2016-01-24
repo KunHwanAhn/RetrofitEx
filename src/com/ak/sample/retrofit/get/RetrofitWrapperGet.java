@@ -60,8 +60,13 @@ public class RetrofitWrapperGet {
         call.enqueue(callback);
     }
     
-    public void getGateways(Map<String, String> queries, Callback<JsonObject> callback) {
-        Call<JsonObject> call = mService.getGateways(mOauthAccessToken, queries);
+    public void getGateways(Map<String, String> queries, List<String> fieldNames, Callback<JsonObject> callback) {
+        Call<JsonObject> call = null;
+        if (fieldNames == null) {
+            call = mService.getGateways(mOauthAccessToken, queries);
+        } else {
+            call = mService.getGateways(mOauthAccessToken, queries, fieldNames);
+        }
         call.enqueue(callback);
     }
 }

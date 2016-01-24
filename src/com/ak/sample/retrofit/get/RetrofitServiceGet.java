@@ -46,4 +46,9 @@ public interface RetrofitServiceGet {
             @Header(HEADER_AUTHORIZATION) String oauthAccessToken,
             @QueryMap Map<String, String> queries);
 
+    @GET(GATEWAYS)
+    Call<JsonObject> getGateways(
+            @Header(HEADER_AUTHORIZATION) String oauthAccessToken,
+            @QueryMap Map<String, String> queries,
+            @Query(QUERY_GATEWAY_FIELDS) List<String> fieldNames);
 }

@@ -8,6 +8,7 @@ import com.ak.sample.retrofit.MyRetrofit;
 public class Main {
     public static final String FIELD_NAME_ID = "id";
     public static final String FIELD_NAME_NAME = "name";
+    public static final String FIELD_NAME_STATUS = "status";
     public static final String QUERY_COUNT = "count";
     public static final String QUERY_FIELDS = "fields";
     public static final String QUERY_EMBED = "embed";
@@ -34,9 +35,9 @@ public class Main {
 
         HashMap<String, String> queries = new HashMap<String, String>();
         queries.put(QUERY_COUNT, String.valueOf(VALUE_COUNT));
-        queries.put(QUERY_FIELDS, VALUE_FIELD);
         queries.put(QUERY_EMBED, VALUE_EMBED);
-        myRetrofit.getGateways(queries);
+        fieldNames.add(FIELD_NAME_STATUS);
+        myRetrofit.getGateways(queries, fieldNames);
     }
 
 }

@@ -28,7 +28,8 @@ public class MyRetrofit {
     }
 
     /**
-     * Get a list of gateways synchronously and print result
+     * Get a list of gateways synchronously and print result<br/>
+     * Please refer <a href="http://support.thingplus.net/ko/rest-api/rest-api.html#id-gateways">Thing+ Rest API document</a>
      */
     public void getGatewaysSync() {
         try {
@@ -57,7 +58,8 @@ public class MyRetrofit {
     }
 
     /**
-     * Get a list of gateways asynchronously and print result
+     * Get a list of gateways asynchronously and print result<br/>
+     * Please refer <a href="http://support.thingplus.net/ko/rest-api/rest-api.html#id-gateways">Thing+ Rest API document</a>
      */
     public void getGatewaysAsync() {
         try {
@@ -70,7 +72,8 @@ public class MyRetrofit {
 
     /**
      * Get a list of gateways with data class asynchronously and print result,
-     * {@link com.ak.sample.retrofit.data.Gateway}
+     * {@link com.ak.sample.retrofit.data.Gateway}<br/>
+     * Please refer <a href="http://support.thingplus.net/ko/rest-api/rest-api.html#id-gateways">Thing+ Rest API document</a>
      */
     public void getGatewaysWithDataClassAsync() {
         try {
@@ -82,7 +85,8 @@ public class MyRetrofit {
     }
 
     /**
-     * Get a gateway asynchronously and print result
+     * Get a gateway asynchronously and print result<br/>
+     * Please refer <a href="http://support.thingplus.net/ko/rest-api/rest-api.html#id-gateways">Thing+ Rest API document</a>
      * 
      * @param gatewayId
      *            gateway ID
@@ -97,7 +101,8 @@ public class MyRetrofit {
     }
 
     /**
-     * Get gateways with count query
+     * Get gateways with count query<br/>
+     * Please refer <a href="http://support.thingplus.net/ko/rest-api/rest-api.html#id-types">Thing+ Rest API document</a>
      * 
      * @param count
      *            the number of gateways you want to get
@@ -112,7 +117,8 @@ public class MyRetrofit {
     }
 
     /**
-     * Get gateways with chosen field names
+     * Get gateways with chosen field names<br/>
+     * Please refer <a href="http://support.thingplus.net/ko/rest-api/rest-api.html#id-types">Thing+ Rest API document</a>
      * 
      * @param fieldNames
      *            chosen field names, such as id, name, status, etc
@@ -127,18 +133,20 @@ public class MyRetrofit {
     }
 
     /**
-     * Get gateways with diverse queries
+     * Get gateways with diverse queries<br/>
+     * Please refer <a href="http://support.thingplus.net/ko/rest-api/rest-api.html#id-types">Thing+ Rest API document</a>
      * 
      * @param queries
-     *            diverse queries, such as "count = 2", "field = name",
-     *            "embed = status"
+     *            diverse queries, such as "count = 2", "embed = status"
+     * @param fieldNames
+     *            chosen field names, such as id, name, status, etc
      */
-    public void getGateways(Map<String, String> queries) {
+    public void getGateways(Map<String, String> queries, List<String> fieldNames) {
         try {
             mLock.acquire();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        mGetWrapper.getGateways(queries, new CallbackJsonObject(mLock, "==GET gateways with queries=="));
+        mGetWrapper.getGateways(queries, fieldNames, new CallbackJsonObject(mLock, "==GET gateways with queries=="));
     }
 }
