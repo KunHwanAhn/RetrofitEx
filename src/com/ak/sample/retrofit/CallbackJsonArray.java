@@ -27,6 +27,7 @@ public class CallbackJsonArray implements Callback<JsonArray> {
     public void onFailure(Throwable throwable) {
         System.out.println(mTag);
         System.out.println(ERROR_NETWORK_CONNECTION_STRING);
+        throwable.printStackTrace();
         System.out.println();
         mLock.release();
     }

@@ -16,7 +16,7 @@ public class Main {
         RetrofitWrapperGet wrapper = new RetrofitWrapperGet(OAUTH2_ACCESS_TOKEN);
 
         lock.acquire();
-        wrapper.getGateways(new CallbackJsonArray(lock, "==GET gateways=="));
+        wrapper.getGateways(new CallbackJsonArray(lock, "==GET gateways async=="));
 
         lock.acquire();
         wrapper.getGatewaysWithDataClass(new CallbackGateway(lock, "==GET gateways with Data class=="));
