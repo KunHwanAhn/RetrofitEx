@@ -4,9 +4,11 @@ import static com.ak.sample.retrofit.utils.Constants.BASE_URL;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import com.ak.sample.retrofit.data.Gateway;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import retrofit.Call;
 import retrofit.Callback;
@@ -43,4 +45,23 @@ public class RetrofitWrapperGet {
         call.enqueue(callback);
     }
 
+    public void getGateway(String gatewayId, Callback<JsonObject> callback) {
+        Call<JsonObject> call = mService.getGateway(mOauthAccessToken, gatewayId);
+        call.enqueue(callback);
+    }
+
+    public void getGateways(int count, Callback<JsonObject> callback) {
+        Call<JsonObject> call = mService.getGateways(mOauthAccessToken, count);
+        call.enqueue(callback);
+    }
+
+    public void getGateways(List<String> fields, Callback<JsonArray> callback) {
+        Call<JsonArray> call = mService.getGateways(mOauthAccessToken, fields);
+        call.enqueue(callback);
+    }
+    
+    public void getGateways(Map<String, String> queries, Callback<JsonObject> callback) {
+        Call<JsonObject> call = mService.getGateways(mOauthAccessToken, queries);
+        call.enqueue(callback);
+    }
 }
