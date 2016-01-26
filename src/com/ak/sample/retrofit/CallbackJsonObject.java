@@ -1,14 +1,20 @@
 package com.ak.sample.retrofit;
 
+import static com.ak.sample.retrofit.utils.Constants.ERROR_AUTHORIZATION_STRING;
 import static com.ak.sample.retrofit.utils.Constants.ERROR_CLIENT_ERROR_STRING;
+import static com.ak.sample.retrofit.utils.Constants.ERROR_JSON_SYNTAX_ERROR_STRING;
 import static com.ak.sample.retrofit.utils.Constants.ERROR_NETWORK_CONNECTION_STRING;
 import static com.ak.sample.retrofit.utils.Constants.ERROR_SERVER_ERROR_STRING;
+import static com.ak.sample.retrofit.utils.Constants.HTTP_CODE_AUTHORIZATION_ERROR;
 import static com.ak.sample.retrofit.utils.Constants.HTTP_CODE_CLIENT_ERROR;
 import static com.ak.sample.retrofit.utils.Constants.HTTP_CODE_SERVER_ERROR;
+import static com.ak.sample.retrofit.utils.Constants.REQUEST_URL;
+import static com.ak.sample.retrofit.utils.Constants.RESPONSE_BODY;
 
 import java.util.concurrent.Semaphore;
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 
 import retrofit.Callback;
 import retrofit.Response;
@@ -26,7 +32,12 @@ public class CallbackJsonObject implements Callback<JsonObject> {
     @Override
     public void onFailure(Throwable throwable) {
         System.out.println(mTag);
-        System.out.println(ERROR_NETWORK_CONNECTION_STRING);
+        if (throwable instanceof JsonSyntaxException) {
+            System.out.println(ERROR_JSON_SYNTAX_ERROR_STRING);
+        } else {
+            System.out.println(ERROR_NETWORK_CONNECTION_STRING);
+        }
+        throwable.printStackTrace();
         System.out.println();
         mLock.release();
     }
@@ -34,10 +45,15 @@ public class CallbackJsonObject implements Callback<JsonObject> {
     @Override
     public void onResponse(Response<JsonObject> response, Retrofit retrofit) {
         System.out.println(mTag);
+        System.out.println(REQUEST_URL + response.raw().request().url().toString());
         if (response.body() != null) {
-            System.out.println(response.body().toString());
+            System.out.println(RESPONSE_BODY + response.body().toString());
         } else if (response.code() >= HTTP_CODE_CLIENT_ERROR && response.code() < HTTP_CODE_SERVER_ERROR) {
-            System.out.println(ERROR_CLIENT_ERROR_STRING);
+            if (response.code() == HTTP_CODE_AUTHORIZATION_ERROR) {
+                System.out.println(ERROR_AUTHORIZATION_STRING);
+            } else {
+                System.out.println(ERROR_CLIENT_ERROR_STRING);
+            }
         } else if (response.code() >= HTTP_CODE_SERVER_ERROR) {
             System.out.println(ERROR_SERVER_ERROR_STRING);
         }
